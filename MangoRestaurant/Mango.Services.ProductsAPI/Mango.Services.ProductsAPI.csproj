@@ -32,7 +32,7 @@
     <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DB.Contexts\" />
+    <Folder Include="Contexts\" />
     <Folder Include="Models\" />
   </ItemGroup>
 </Project>

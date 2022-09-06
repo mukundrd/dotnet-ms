@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace Mango.Services.ProductsAPI.DB.Contexts
+namespace Mango.Services.ProductsAPI.Contexts
 {
     public class ApplicationDBContext : DbContext
     {
