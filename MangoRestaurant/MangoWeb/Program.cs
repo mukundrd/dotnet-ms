@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MangoWeb.Data;
+using MangoWeb.Services;
+using MangoWeb;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
+
+builder.Services.AddHttpClient<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
