@@ -56,4 +56,8 @@ scope.ServiceProvider.GetRequiredService<IDbInitializer>().Initialize();
 
 app.MapRazorPages();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.Run();

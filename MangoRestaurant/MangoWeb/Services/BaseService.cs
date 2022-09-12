@@ -43,13 +43,13 @@ namespace MangoWeb.Services
                     case SD.ApiType.POST:
                         message.Method = HttpMethod.Post;
                         break;
-                    case SD.ApiType.DELETE:
-                        message.Method = HttpMethod.Delete;
-                        break;
                     case SD.ApiType.PUT:
                         message.Method = HttpMethod.Put;
                         break;
-                    default:
+                    case SD.ApiType.DELETE:
+                        message.Method = HttpMethod.Delete;
+                        break;
+                    default :
                         message.Method = HttpMethod.Get;
                         break;
                 }
@@ -60,7 +60,7 @@ namespace MangoWeb.Services
             }
             catch(Exception e)
             {
-                var dto = new ResponseDTO()
+                var dto = new ResponseDTO
                 {
                     DisplayMessage = "Error",
                     ErrorMessages = new List<string> { Convert.ToString(e.Message) },
