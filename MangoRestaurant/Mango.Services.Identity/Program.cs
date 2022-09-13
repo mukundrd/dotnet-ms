@@ -2,6 +2,7 @@ using Mango.Services.Identity;
 using Mango.Services.Identity.Initializer;
 using Mango.Services.Identity.Models;
 using Mango.Services.ProductsAPI.Contexts;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +49,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseIdentityServer();
-
 app.UseAuthorization();
 
 var scope = app.Services.CreateScope();

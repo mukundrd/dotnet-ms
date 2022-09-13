@@ -35,7 +35,7 @@ namespace Mango.Services.Identity.Initializer
                 PhoneNumber = "9876543210",
                 FirstName = "Admin",
                 LastName = "User"
-            }, "Admin@123", SD.UserRole.Admin);
+            }, "Admin@123", SD.Admin);
 
             var result2 = CreateUserAndRoles(new ApplicationUser()
             {
@@ -45,34 +45,34 @@ namespace Mango.Services.Identity.Initializer
                 PhoneNumber = "9876543211",
                 FirstName = "Cust",
                 LastName = "User"
-            }, "Customer@123", SD.UserRole.Customer);
+            }, "Customer@123", SD.Customer);
         }
 
         private bool AreRolesCreated()
         {
-            if (_roleManager.FindByNameAsync(SD.UserRole.Admin.ToString()).Result != null)
+            if (_roleManager.FindByNameAsync(SD.Admin.ToString()).Result != null)
             {
                 return true;
             }
 
-            _roleManager.CreateAsync(new IdentityRole(SD.UserRole.Admin.ToString())).GetAwaiter().GetResult();
-            _roleManager.CreateAsync(new IdentityRole(SD.UserRole.Customer.ToString())).GetAwaiter().GetResult();
+            _roleManager.CreateAsync(new IdentityRole(SD.Admin.ToString())).GetAwaiter().GetResult();
+            _roleManager.CreateAsync(new IdentityRole(SD.Customer.ToString())).GetAwaiter().GetResult();
 
             return false;
 
         }
 
-        private IdentityResult CreateUserAndRoles(ApplicationUser user, string password, UserRole role)
+        private IdentityResult CreateUserAndRoles(ApplicationUser user, string password, string role)
         {
             _userManager.CreateAsync(user, password).GetAwaiter().GetResult();
-            _userManager.AddToRoleAsync(user, role.ToString()).GetAwaiter().GetResult();
+            _userManager.AddToRoleAsync(user, role).GetAwaiter().GetResult();
 
             return _userManager.AddClaimsAsync(user, new Claim[]
             {
                 new Claim(JwtClaimTypes.Name, user.FirstName + " " + user.LastName),
                 new Claim(JwtClaimTypes.GivenName, user.FirstName),
                 new Claim(JwtClaimTypes.FamilyName, user.LastName),
-                new Claim(JwtClaimTypes.Role, role.ToString())
+                new Claim(JwtClaimTypes.Role, role)
             }).Result;
         }
     }
