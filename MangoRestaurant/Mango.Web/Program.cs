@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(options =>
         options.Scope.Add("mango");
         options.SaveTokens = true;
 
-        /*options.Events = new OpenIdConnectEvents
+        options.Events = new OpenIdConnectEvents
         {
             OnRemoteFailure = context =>
             {
@@ -39,7 +39,7 @@ builder.Services.AddAuthentication(options =>
                 context.HandleResponse();
                 return Task.FromResult(0);
             }
-        };*/
+        };
     });
 
 var app = builder.Build();
