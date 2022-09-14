@@ -1,27 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using MangoWeb.Data;
-using MangoWeb.Services;
+﻿using MangoWeb.Services;
 using MangoWeb;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
-
 builder.Services.AddHttpClient<IProductService, ProductService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+SD.ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
 
 builder.Services.AddControllersWithViews();
 
@@ -44,7 +31,7 @@ builder.Services.AddAuthentication(options =>
         options.Scope.Add("mango");
         options.SaveTokens = true;
 
-        options.Events = new OpenIdConnectEvents
+        /*options.Events = new OpenIdConnectEvents
         {
             OnRemoteFailure = context =>
             {
@@ -52,7 +39,7 @@ builder.Services.AddAuthentication(options =>
                 context.HandleResponse();
                 return Task.FromResult(0);
             }
-        };
+        };*/
     });
 
 var app = builder.Build();
@@ -60,7 +47,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+    app.UseDeveloperExceptionPage();
 }
 else
 {

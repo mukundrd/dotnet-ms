@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Reflection.Metadata;
 
-namespace Mango.Services.ProductsAPI.Contexts
+namespace Mango.Services.Identity.Contexts
 {
     public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
     {
