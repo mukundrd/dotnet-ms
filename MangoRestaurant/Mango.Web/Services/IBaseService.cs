@@ -1,11 +1,11 @@
-﻿using Mango.Services.ProductsAPI.DTOs;
-using MangoWeb.Models;
+﻿using Mango.Contracts.Dtos;
+using Mango.Web.Models;
 
-namespace MangoWeb.Services
+namespace Mango.Web.Services
 {
     public interface IBaseService : IDisposable
     {
-        ResponseDTO responseModel { get; set; }
+        ResponseDto responseModel { get; set; }
 
         Task<T?> SendAsync<T>(APIRequest apiRequest);
     }

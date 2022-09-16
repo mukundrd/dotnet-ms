@@ -6,5 +6,7 @@ namespace Mango.Services.Identity.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public string DisplayName { get { return FirstName + " " + LastName; }}
     }
 }

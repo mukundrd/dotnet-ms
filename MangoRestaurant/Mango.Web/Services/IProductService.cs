@@ -1,18 +1,17 @@
-﻿using Mango.Services.ProductsAPI.DTOs;
-using Microsoft.AspNetCore.Mvc;
+﻿using Mango.Contracts.Dtos;
 
-namespace MangoWeb.Services
+namespace Mango.Web.Services
 {
     public interface IProductService: IBaseService
     {
-        Task<T?> GetAllProductsAsync<T>();
+        Task<T?> GetAllProductsAsync<T>(string token);
 
-        Task<T?> GetProductByIdAsync<T>(int id);
+        Task<T?> GetProductByIdAsync<T>(string token, int id);
 
-        Task<T?> CreateProductAsync<T>(ProductDTO product);
+        Task<T?> CreateProductAsync<T>(string token, ProductDto productDto);
 
-        Task<T?> UpdateProductAsync<T>(ProductDTO product);
+        Task<T?> UpdateProductAsync<T>(string token, ProductDto productDto);
 
-        Task<T?> DeleteProductsAsync<T>(int id);
+        Task<T?> DeleteProductsAsync<T>(string token, int id);
     }
 }

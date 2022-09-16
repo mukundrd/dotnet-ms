@@ -1,20 +1,20 @@
-﻿using Mango.Services.ProductsAPI.DTOs;
-using MangoWeb.Models;
+﻿using Mango.Contracts.Dtos;
+using Mango.Web.Models;
 using Newtonsoft.Json;
-using System;
 using System.Text;
+using System.Net.Http.Headers;
 
-namespace MangoWeb.Services
+namespace Mango.Web.Services
 {
     public class BaseService : IBaseService
     {
-        public ResponseDTO responseModel { get; set; }
+        public ResponseDto responseModel { get; set; }
 
         public IHttpClientFactory httpClient { get; set; }
 
         public BaseService(IHttpClientFactory httpClient)
         {
-            this.responseModel = new ResponseDTO();
+            this.responseModel = new ResponseDto();
             this.httpClient = httpClient;
         }
 
@@ -36,6 +36,11 @@ namespace MangoWeb.Services
                 if(apiRequest.Data != null)
                 {
                     message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data), Encoding.UTF8, "application/json");
+                }
+
+                if (!string.IsNullOrEmpty(apiRequest.AccessToken))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.AccessToken);
                 }
 
                 switch (apiRequest.ApiType)
@@ -60,7 +65,7 @@ namespace MangoWeb.Services
             }
             catch(Exception e)
             {
-                var dto = new ResponseDTO
+                var dto = new ResponseDto
                 {
                     DisplayMessage = "Error",
                     ErrorMessages = new List<string> { Convert.ToString(e.Message) },

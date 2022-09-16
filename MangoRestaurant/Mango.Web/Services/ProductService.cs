@@ -1,66 +1,61 @@
-﻿using Mango.Services.ProductsAPI.DTOs;
+﻿using Mango.Contracts.Dtos;
 
-namespace MangoWeb.Services
+namespace Mango.Web.Services
 {
     public class ProductService : BaseService, IProductService
     {
 
-        private readonly IHttpClientFactory clientFactory;
+        public ProductService(IHttpClientFactory clientFactory) : base(clientFactory) { }
 
-        public ProductService(IHttpClientFactory clientFactory): base(clientFactory)
-        {
-            this.clientFactory = clientFactory;
-        }
-
-        public async Task<T?> CreateProductAsync<T>(ProductDTO product)
+        public async Task<T?> CreateProductAsync<T>(string token, ProductDto product)
         {
             return await SendAsync<T>(new Models.APIRequest()
             {
                 ApiType = SD.ApiType.POST,
                 Data = product,
                 Url = SD.ProductAPIBase + "/api/products",
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T?> DeleteProductsAsync<T>(int id)
+        public async Task<T?> DeleteProductsAsync<T>(string token, int id)
         {
             return await SendAsync<T>(new Models.APIRequest()
             {
                 ApiType = SD.ApiType.DELETE,
                 Url = SD.ProductAPIBase + "/api/products/" + id,
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T?> GetAllProductsAsync<T>()
+        public async Task<T?> GetAllProductsAsync<T>(string token)
         {
             return await SendAsync<T>(new Models.APIRequest()
             {
                 ApiType = SD.ApiType.GET,
                 Url = SD.ProductAPIBase + "/api/products",
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T?> GetProductByIdAsync<T>(int id)
+        public async Task<T?> GetProductByIdAsync<T>(string token, int id)
         {
             return await SendAsync<T>(new Models.APIRequest()
             {
                 ApiType = SD.ApiType.GET,
                 Url = SD.ProductAPIBase + "/api/products/" + id,
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T?> UpdateProductAsync<T>(ProductDTO product)
+        public async Task<T?> UpdateProductAsync<T>(string token, ProductDto product)
         {
             return await SendAsync<T>(new Models.APIRequest()
             {
                 ApiType = SD.ApiType.PUT,
                 Data = product,
                 Url = SD.ProductAPIBase + "/api/products",
-                AccessToken = ""
+                AccessToken = token
             });
         }
     }
