@@ -1,4 +1,7 @@
 ﻿@model Mango.Contracts.Dtos.CartDto
+@{
+    ViewData["Title"] = "Cart";
+}
 
 @if (Model.CartHeader != null && Model.CartDetails.Count() > 0)
 {

@@ -3,7 +3,6 @@ using Mango.Services.Identity.Contexts;
 using Mango.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using static Mango.Services.Identity.SD;
 
 namespace Mango.Services.Identity.Initializer
 {
