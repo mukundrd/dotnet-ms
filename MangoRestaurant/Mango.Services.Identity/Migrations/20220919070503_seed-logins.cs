@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mango.Services.Identity.Migrations
 {
-    public partial class ConfigureDefaultIdentityTables : Migration
+    public partial class seedlogins : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

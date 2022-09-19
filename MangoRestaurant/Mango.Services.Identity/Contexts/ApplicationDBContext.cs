@@ -1,8 +1,7 @@
-﻿using Mango.Services.Identity.Models;
+﻿using Mango.Contracts.DBOperations;
+using Mango.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Reflection.Metadata;
 
 namespace Mango.Services.Identity.Contexts
 {
@@ -15,13 +14,7 @@ namespace Mango.Services.Identity.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(DBConnection.GetConnectionString());
         }
     }
 }

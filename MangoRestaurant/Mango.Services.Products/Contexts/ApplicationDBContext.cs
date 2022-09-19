@@ -1,4 +1,5 @@
-﻿using Mango.Contracts.Models.Service;
+﻿using Mango.Contracts.DBOperations;
+using Mango.Contracts.Models.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.ProductsAPI.Contexts
@@ -12,13 +13,7 @@ namespace Mango.Services.ProductsAPI.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(DBConnection.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,7 +26,7 @@ namespace Mango.Services.ProductsAPI.Contexts
                 Name = "Samosa",
                 Price = 15,
                 Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/14.jpg",
+                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/14.jpg",
                 CategoryName = "Appetizer"
             });
             modelBuilder.Entity<Product>().HasData(new Product
@@ -40,7 +35,7 @@ namespace Mango.Services.ProductsAPI.Contexts
                 Name = "Paneer Tikka",
                 Price = 13.99,
                 Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/12.jpg",
+                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/12.jpg",
                 CategoryName = "Appetizer"
             });
             modelBuilder.Entity<Product>().HasData(new Product
@@ -49,7 +44,7 @@ namespace Mango.Services.ProductsAPI.Contexts
                 Name = "Sweet Pie",
                 Price = 10.99,
                 Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/11.jpg",
+                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/11.jpg",
                 CategoryName = "Dessert"
             });
             modelBuilder.Entity<Product>().HasData(new Product
@@ -58,7 +53,16 @@ namespace Mango.Services.ProductsAPI.Contexts
                 Name = "Pav Bhaji",
                 Price = 15,
                 Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/13.jpg",
+                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/13.jpg",
+                CategoryName = "Entree"
+            });
+            modelBuilder.Entity<Product>().HasData(new Product
+            {
+                ProductId = 5,
+                Name = "Dhokla",
+                Price = 10,
+                Description = "A popular Gujarati snack, dhokla is one of the most loved snack across the country that is made in various ways. This dhokla recipe is a quick and easy one that is delicious as well as healthy! A recipe that is steamed and made in just 30 minutes, using besan with a colorful, chili tempering.",
+                ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/15.jpg",
                 CategoryName = "Entree"
             });
         }

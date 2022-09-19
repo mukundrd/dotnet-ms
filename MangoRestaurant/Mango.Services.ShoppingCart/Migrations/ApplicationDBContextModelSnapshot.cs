@@ -21,7 +21,7 @@ namespace Mango.Services.ShoppingCart.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Mango.Services.ShoppingCart.Models.CartDetail", b =>
+            modelBuilder.Entity("Mango.Contracts.Models.Service.CartDetail", b =>
                 {
                     b.Property<int>("CartDetailsId")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace Mango.Services.ShoppingCart.Migrations
                     b.ToTable("CartDetails");
                 });
 
-            modelBuilder.Entity("Mango.Services.ShoppingCart.Models.CartHeader", b =>
+            modelBuilder.Entity("Mango.Contracts.Models.Service.CartHeader", b =>
                 {
                     b.Property<int>("CartHeaderId")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace Mango.Services.ShoppingCart.Migrations
                     b.ToTable("CartHeaders");
                 });
 
-            modelBuilder.Entity("Mango.Services.ShoppingCart.Models.Product", b =>
+            modelBuilder.Entity("Mango.Contracts.Models.Service.ProductGen", b =>
                 {
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -97,15 +97,15 @@ namespace Mango.Services.ShoppingCart.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Mango.Services.ShoppingCart.Models.CartDetail", b =>
+            modelBuilder.Entity("Mango.Contracts.Models.Service.CartDetail", b =>
                 {
-                    b.HasOne("Mango.Services.ShoppingCart.Models.CartHeader", "CartHeader")
+                    b.HasOne("Mango.Contracts.Models.Service.CartHeader", "CartHeader")
                         .WithMany()
                         .HasForeignKey("CartHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Mango.Services.ShoppingCart.Models.Product", "Product")
+                    b.HasOne("Mango.Contracts.Models.Service.ProductGen", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)

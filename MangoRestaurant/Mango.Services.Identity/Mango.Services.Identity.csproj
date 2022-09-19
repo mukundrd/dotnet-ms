@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mango.Contracts\Mango.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

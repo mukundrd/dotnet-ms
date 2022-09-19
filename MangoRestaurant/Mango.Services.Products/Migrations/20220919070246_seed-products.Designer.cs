@@ -8,22 +8,22 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Mango.Services.ProductsAPI.Migrations
+namespace Mango.Services.Products.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220907090526_SeedProducts01")]
-    partial class SeedProducts01
+    [Migration("20220919070246_seed-products")]
+    partial class seedproducts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Mango.Services.ProductsAPI.Models.Product", b =>
+            modelBuilder.Entity("Mango.Contracts.Models.Service.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace Mango.Services.ProductsAPI.Migrations
                             ProductId = 1,
                             CategoryName = "Appetizer",
                             Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/14.jpg",
+                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/14.jpg",
                             Name = "Samosa",
                             Price = 15.0
                         },
@@ -69,7 +69,7 @@ namespace Mango.Services.ProductsAPI.Migrations
                             ProductId = 2,
                             CategoryName = "Appetizer",
                             Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/12.jpg",
+                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/12.jpg",
                             Name = "Paneer Tikka",
                             Price = 13.99
                         },
@@ -78,7 +78,7 @@ namespace Mango.Services.ProductsAPI.Migrations
                             ProductId = 3,
                             CategoryName = "Dessert",
                             Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/11.jpg",
+                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/11.jpg",
                             Name = "Sweet Pie",
                             Price = 10.99
                         },
@@ -87,9 +87,18 @@ namespace Mango.Services.ProductsAPI.Migrations
                             ProductId = 4,
                             CategoryName = "Entree",
                             Description = "Praesent scelerisque, mi sed ultrices condimentum, lacus ipsum viverra massa, in lobortis sapien eros in arcu. Quisque vel lacus ac magna vehicula sagittis ut non lacus.<br/>Sed volutpat tellus lorem, lacinia tincidunt tellus varius nec. Vestibulum arcu turpis, facilisis sed ligula ac, maximus malesuada neque. Phasellus commodo cursus pretium.",
-                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango/13.jpg",
+                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/13.jpg",
                             Name = "Pav Bhaji",
                             Price = 15.0
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            CategoryName = "Entree",
+                            Description = "A popular Gujarati snack, dhokla is one of the most loved snack across the country that is made in various ways. This dhokla recipe is a quick and easy one that is delicious as well as healthy! A recipe that is steamed and made in just 30 minutes, using besan with a colorful, chili tempering.",
+                            ImageUrl = "https://restaurantblob.blob.core.windows.net/mango-restarant/15.jpg",
+                            Name = "Dhokla",
+                            Price = 10.0
                         });
                 });
 #pragma warning restore 612, 618

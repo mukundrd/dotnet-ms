@@ -1,4 +1,5 @@
-﻿using Mango.Contracts.Models.Service;
+﻿using Mango.Contracts.DBOperations;
+using Mango.Contracts.Models.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.ShoppingCart.Contexts
@@ -12,13 +13,7 @@ namespace Mango.Services.ShoppingCart.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(DBConnection.GetConnectionString());
         }
 
         public DbSet<ProductGen> Products { get; set; }

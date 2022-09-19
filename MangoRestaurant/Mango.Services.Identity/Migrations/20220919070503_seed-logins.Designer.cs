@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mango.Services.Identity.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220912153624_ConfigureDefaultIdentityTables")]
-    partial class ConfigureDefaultIdentityTables
+    [Migration("20220919070503_seed-logins")]
+    partial class seedlogins
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);

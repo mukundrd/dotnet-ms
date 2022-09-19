@@ -4,7 +4,7 @@
 
 namespace Mango.Services.ShoppingCart.Migrations
 {
-    public partial class AddProductAndCartModels : Migration
+    public partial class seedshoppingcart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
