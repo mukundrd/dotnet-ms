@@ -12,14 +12,17 @@ namespace Mango.Services.ShoppingCart.Controllers
     {
         private readonly ICartRepository _cartRepository;
 
+        private readonly ICouponRepository _couponRepository;
+
         private readonly IMessageBus _messageBus;
 
         private ResponseDto _response = new();
 
-        public CartController(ICartRepository cartRepository, IMessageBus messageBus)
+        public CartController(ICartRepository cartRepository, IMessageBus messageBus, ICouponRepository couponRepository)
         {
             _cartRepository = cartRepository;
             _messageBus = messageBus;
+            _couponRepository = couponRepository;
         }
 
         [HttpGet("GetCart/{userId}")]
@@ -132,6 +135,32 @@ namespace Mango.Services.ShoppingCart.Controllers
         {
             try
             {
+
+                if (!string.IsNullOrEmpty(checkoutHead.CouponCode))
+                {
+                    CouponDto coupon = await _couponRepository.GetCoupon(checkoutHead.CouponCode);
+                    if (coupon == null)
+                    {
+                        _response.IsSuccess = false;
+                        _response.ErrorMessages = new List<string>()
+                        {
+                            "Coupon doesn't exist or invalid, please confirm"
+                        };
+                        _response.DisplayMessage = "Coupon doesn't exist or invalid, please confirm";
+                        return _response;
+                    }
+                    else if (checkoutHead.DiscountTotal != coupon.DiscountAmount)
+                    {
+                        _response.IsSuccess = false;
+                        _response.ErrorMessages = new List<string>()
+                        {
+                            "Coupon Price has changed, please confirm"
+                        };
+                        _response.DisplayMessage = "Coupon Price has changed, please confirm";
+                        return _response;
+                    }
+                }
+
                 var cartDto = await _cartRepository.GetCartByUserid(checkoutHead.UserId);
                 if (cartDto == null)
                 {

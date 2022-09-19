@@ -49,7 +49,10 @@ namespace Mango.Web.Controllers
                     if (coupon?.IsSuccess == true)
                     {
                         var couponObj = Deserialize<CouponDto>(coupon.Result);
-                        cartDto.CartHeader.DiscountTotal = couponObj.DiscountAmount;
+                        if (couponObj != null)
+                        {
+                            cartDto.CartHeader.DiscountTotal = couponObj.DiscountAmount;
+                        }
                     }
 
                 }
@@ -111,6 +114,11 @@ namespace Mango.Web.Controllers
             try
             {
                 var respone = await _cartService.Checkout<ResponseDto>(await GetAccessToken(), cartDto.CartHeader);
+                if (!respone.IsSuccess)
+                {
+                    ViewBag.Error = respone.DisplayMessage;
+                    return RedirectToAction(nameof(Checkout));
+                }
                 return RedirectToAction(nameof (Confirmation));
             }
             catch

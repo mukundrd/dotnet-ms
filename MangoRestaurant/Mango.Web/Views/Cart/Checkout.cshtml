@@ -3,6 +3,10 @@
     ViewData["Title"] = "Checkout";
 }
 
+@if (ViewBag.Error != null) {
+    <div class="alert alert-warning">@ViewBag.Error</div>
+}
+
 @if (Model != null && Model.CartDetails.Count() > 0)
 {
     <form method="post">
