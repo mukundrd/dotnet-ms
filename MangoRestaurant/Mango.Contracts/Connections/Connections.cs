@@ -31,14 +31,14 @@ namespace Mango.Contracts.Connections
 
         }
 
-        public static string GetConnectionStringFrom(string file, string key)
+        public static T GetConnectionStringFrom<T>(string file, string key)
         {
             var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile(file)
-            .Build();
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile(file)
+                .Build();
 
-            return configuration.GetConnectionString(key);
+            return configuration.GetValue<T>(key);
         }
     }
 }

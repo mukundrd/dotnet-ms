@@ -1,4 +1,4 @@
-namespace Mango.Services.ShoppingCart
+namespace Mango.Services.Orders
 {
     public class WeatherForecast
     {

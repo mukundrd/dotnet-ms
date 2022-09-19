@@ -1,6 +1,7 @@
 ﻿using Azure.Messaging.ServiceBus;
 using Mango.Contracts.Connections;
 using Mango.Contracts.Messages;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -11,10 +12,10 @@ namespace Mango.MessageBus
 
         private readonly ServiceBusClient client;
 
-        public AzureServiceBusMessageBus()
+        public AzureServiceBusMessageBus(IConfiguration configuration)
         {
-            string connectionString = Connections.GetConnectionStringFrom("bus-connection.json", "DefaultConnection");
-            client = new ServiceBusClient(connectionString);
+            string serviceBusConnectionString = Connections.GetConnectionStringFrom<string>("bus-connection.json", "ServiceBusConnectionString");
+            client = new ServiceBusClient(serviceBusConnectionString);
         }
 
         public async Task PublishMessage(BaseMessage message, string topicName)

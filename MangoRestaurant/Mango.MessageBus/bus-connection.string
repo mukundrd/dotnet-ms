@@ -1,5 +1,3 @@
 ﻿{
-	"ConnectionStrings": {
-		"DefaultConnection": "Endpoint=sb://{server-name}.servicebus.windows.net/;SharedAccessKeyName={key_name};SharedAccessKey={access_key}"
-	}
+  "DefaultConnection": "Endpoint=sb://{server-name}.servicebus.windows.net/;SharedAccessKeyName={key_name};SharedAccessKey={access_key}"
 }
