@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="db-connection.string" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="db-connection.string" />
+  </ItemGroup>
+
 </Project>
