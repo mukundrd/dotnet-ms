@@ -1,4 +1,4 @@
-﻿using Mango.Contracts.DBOperations;
+﻿using Mango.Contracts.Connections;
 using Mango.Contracts.Models.Service;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +13,7 @@ namespace Mango.Services.Coupons.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(DBConnection.GetConnectionString());
+            optionsBuilder.UseSqlServer(Connections.GetDBConnectionString());
         }
 
         public DbSet<Coupon> Coupons { get; set; }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Mango.Contracts.DBOperations;
+using Mango.Contracts.Connections;
 using Mango.Services.ProductsAPI;
 using Mango.Services.ProductsAPI.Contexts;
 using Mango.Services.ProductsAPI.Repository;
@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DBConnection.GetConnectionString()));
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Connections.GetDBConnectionString()));
 
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);

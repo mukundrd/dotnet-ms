@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{65DB46
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Contracts", "Mango.Contracts\Mango.Contracts.csproj", "{131F3034-3D3B-4E15-A6D5-8E3588F37FDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mango.Services.Coupons", "Mango.Services.Coupons\Mango.Services.Coupons.csproj", "{BA17928F-CF2F-4610-B924-5FCBEF425AEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mango.Services.Coupons", "Mango.Services.Coupons\Mango.Services.Coupons.csproj", "{BA17928F-CF2F-4610-B924-5FCBEF425AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mango.MessageBus", "Mango.MessageBus\Mango.MessageBus.csproj", "{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BA17928F-CF2F-4610-B924-5FCBEF425AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA17928F-CF2F-4610-B924-5FCBEF425AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA17928F-CF2F-4610-B924-5FCBEF425AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{170AD505-DECB-409B-90A1-D7323DF46AD0} = {9B07974E-FA9D-48A8-9E92-FECCC95763E8}
 		{131F3034-3D3B-4E15-A6D5-8E3588F37FDD} = {65DB4664-8EAD-4769-9652-08F109EAFE44}
 		{BA17928F-CF2F-4610-B924-5FCBEF425AEA} = {9B07974E-FA9D-48A8-9E92-FECCC95763E8}
+		{B8F04CAB-CBD6-4502-B2A7-DCD21E63C5A0} = {65DB4664-8EAD-4769-9652-08F109EAFE44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7554DC5F-6D23-4FB6-A9CF-4B902D4D78C1}

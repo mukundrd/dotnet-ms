@@ -1,0 +1,5 @@
+﻿{
+	"ConnectionStrings": {
+		"DefaultConnection": "Server=tcp:{server-name}.database.windows.net,1433;Database=Mango{DatabaseName};User ID={user-id@server-name};Password={P@ssw0rd};Trusted_Connection=False;Encrypt=True;"
+	}
+}

@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 **/.DS_Store
 **/db-connection.json
+**/bus-connection.json

@@ -1,4 +1,4 @@
-﻿using Mango.Contracts.DBOperations;
+﻿using Mango.Contracts.Connections;
 using Mango.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +14,7 @@ namespace Mango.Services.Identity.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(DBConnection.GetConnectionString());
+            optionsBuilder.UseSqlServer(Connections.GetDBConnectionString());
         }
     }
 }

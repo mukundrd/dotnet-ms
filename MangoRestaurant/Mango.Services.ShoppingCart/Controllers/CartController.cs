@@ -1,5 +1,6 @@
 ﻿using Mango.Contracts.Dtos;
 using Mango.Contracts.Messages;
+using Mango.MessageBus;
 using Mango.Services.ShoppingCart.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +12,14 @@ namespace Mango.Services.ShoppingCart.Controllers
     {
         private readonly ICartRepository _cartRepository;
 
+        private readonly IMessageBus _messageBus;
+
         private ResponseDto _response = new();
 
-        public CartController(ICartRepository cartRepository)
+        public CartController(ICartRepository cartRepository, IMessageBus messageBus)
         {
             _cartRepository = cartRepository;
+            _messageBus = messageBus;
         }
 
         [HttpGet("GetCart/{userId}")]
@@ -134,7 +138,9 @@ namespace Mango.Services.ShoppingCart.Controllers
                     return BadRequest();
                 }
 
-                cartDto.CartDetails = checkoutHead.CartDetails;
+                checkoutHead.CartDetails = cartDto.CartDetails;
+                await _messageBus.PublishMessage(checkoutHead, "checkoutmessagetopic");
+
             }
             catch (Exception ex)
             {

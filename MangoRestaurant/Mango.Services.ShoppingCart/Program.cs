@@ -1,5 +1,6 @@
 using AutoMapper;
-using Mango.Contracts.DBOperations;
+using Mango.Contracts.Connections;
+using Mango.MessageBus;
 using Mango.Services.ShoppingCart;
 using Mango.Services.ShoppingCart.Contexts;
 using Mango.Services.ShoppingCart.Repositories;
@@ -11,13 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DBConnection.GetConnectionString()));
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Connections.GetDBConnectionString()));
 
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+builder.Services.AddSingleton<IMessageBus, AzureServiceBusMessageBus>();
 
 builder.Services.AddControllers();
 

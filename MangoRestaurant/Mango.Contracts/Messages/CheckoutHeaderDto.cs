@@ -2,7 +2,7 @@
 
 namespace Mango.Contracts.Messages
 {
-    public class CheckoutHeaderDto
+    public class CheckoutHeaderDto: BaseMessage
     {
         public int CartHeaderId { get; set; }
 

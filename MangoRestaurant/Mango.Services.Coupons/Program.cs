@@ -5,13 +5,13 @@ using Microsoft.OpenApi.Models;
 using Mango.Services.Coupons.Contexts;
 using Mango.Services.Coupons;
 using Mango.Services.Coupons.Repository;
-using Mango.Contracts.DBOperations;
+using Mango.Contracts.Connections;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(DBConnection.GetConnectionString()));
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Connections.GetDBConnectionString()));
 
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
