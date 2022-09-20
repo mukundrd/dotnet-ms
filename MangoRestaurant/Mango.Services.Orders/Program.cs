@@ -1,8 +1,10 @@
 using AutoMapper;
 using Mango.Contracts.Connections;
 using Mango.MessageBus.Consumers;
+using Mango.MessageBus.Producers;
+using Mango.MessageBus.Producers.Messages;
 using Mango.Services.Orders;
-using Mango.Services.Orders.Consumer;
+using Mango.Services.Orders.Consumers;
 using Mango.Services.Orders.Contexts;
 using Mango.Services.Orders.Extensions;
 using Mango.Services.Orders.Repository;
@@ -28,6 +30,7 @@ optionsBuilder.UseSqlServer(Connections.GetDBConnectionString());
 
 builder.Services.AddSingleton(new OrderRepository(optionsBuilder.Options));
 builder.Services.AddSingleton<IAzureServiceBusConsumer, AzureServiceBusConsumer>();
+builder.Services.AddSingleton<IMessageBus, AzureServiceBusMessageBus>();
 
 builder.Services.AddControllers();
 
@@ -56,7 +59,7 @@ builder.Services.AddSwaggerGen(config =>
 {
     config.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "Mango.Services.CouponsApi",
+        Title = "Mango.Services.OrdersApi",
         Version = "v1"
     });
 

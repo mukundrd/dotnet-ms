@@ -21,7 +21,9 @@ namespace Mango.Services.Orders.Repository
             {
                 await using var _db = new ApplicationDBContext(_dbContext);
                 _db.OrderHeaders.Add(orderHeader);
+                _db.OrderDetails.AddRange(orderHeader.OrderDetails);
                 await _db.SaveChangesAsync();
+                saved = true;
             }
             catch(Exception ex)
             {
