@@ -1,6 +1,6 @@
 using AutoMapper;
 using Mango.Contracts.Connections;
-using Mango.Contracts.Messages;
+using Mango.MessageBus.Consumers;
 using Mango.Services.Orders;
 using Mango.Services.Orders.Consumer;
 using Mango.Services.Orders.Contexts;

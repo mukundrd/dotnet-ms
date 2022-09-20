@@ -7,11 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="connection-string.string" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="connection-string.string" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Mango.Contracts.Dtos;
 using Mango.Contracts.Messages;
-using Mango.MessageBus;
+using Mango.MessageBus.Producers.Messages;
 using Mango.Services.ShoppingCart.Repositories;
 using Microsoft.AspNetCore.Mvc;
 

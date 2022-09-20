@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mango.Contracts\Mango.Contracts.csproj" />
+	<ProjectReference Include="..\Mango.MessageBus\Mango.MessageBus.csproj" />
   </ItemGroup>
 
 </Project>

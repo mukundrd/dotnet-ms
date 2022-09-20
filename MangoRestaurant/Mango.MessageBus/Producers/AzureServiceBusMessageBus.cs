@@ -1,11 +1,12 @@
 ﻿using Azure.Messaging.ServiceBus;
 using Mango.Contracts.Connections;
 using Mango.Contracts.Messages;
+using Mango.MessageBus.Producers.Messages;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace Mango.MessageBus
+namespace Mango.MessageBus.Producers
 {
     public class AzureServiceBusMessageBus : IMessageBus
     {

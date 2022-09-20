@@ -1,5 +1,4 @@
-﻿using Mango.Contracts.Messages;
-using Mango.Services.Orders.Consumer;
+﻿using Mango.MessageBus.Consumers;
 
 namespace Mango.Services.Orders.Extensions
 {

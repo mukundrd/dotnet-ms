@@ -1,4 +1,4 @@
-﻿namespace Mango.Contracts.Messages
+﻿namespace Mango.MessageBus.Consumers
 {
     public interface IAzureServiceBusConsumer
     {

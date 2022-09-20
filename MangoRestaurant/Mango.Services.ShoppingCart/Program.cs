@@ -1,6 +1,7 @@
 using AutoMapper;
 using Mango.Contracts.Connections;
-using Mango.MessageBus;
+using Mango.MessageBus.Producers;
+using Mango.MessageBus.Producers.Messages;
 using Mango.Services.ShoppingCart;
 using Mango.Services.ShoppingCart.Contexts;
 using Mango.Services.ShoppingCart.Repositories;

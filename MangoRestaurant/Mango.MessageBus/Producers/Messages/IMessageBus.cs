@@ -1,6 +1,6 @@
 ﻿using Mango.Contracts.Messages;
 
-namespace Mango.MessageBus
+namespace Mango.MessageBus.Producers.Messages
 {
     public interface IMessageBus
     {
